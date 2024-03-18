@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb0iqbvgnpoqr"]
+
+[ext_resource type="Script" path="res://scenes/title/title.gd" id="1_vqla1"]
+[ext_resource type="FontFile" uid="uid://b6jsaicvd1rvp" path="res://font/BoutiqueBitmap9x9_1.9/BoutiqueBitmap9x9_1.9.ttf" id="2_h7v7r"]
+[ext_resource type="FontFile" uid="uid://bhso28fg75ws2" path="res://font/zpix/zpix.ttf" id="2_vvbqu"]
+[ext_resource type="Shader" path="res://scenes/title/title.gdshader" id="3_t5cwp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4v878"]
+shader = ExtResource("3_t5cwp")
+shader_parameter/progress = 0.0
+shader_parameter/multiplier = 3.0
+shader_parameter/angle = 0.0
+shader_parameter/anchor = Vector2(0.5, 0.5)
+shader_parameter/anchorOffset = 1.0
+shader_parameter/diamondPixelSize = 10.0
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_vqla1")
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_top = 128.0
+offset_right = 853.0
+offset_bottom = 213.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_h7v7r")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[center]NewGame 標題[/center]"
+scroll_active = false
+
+[node name="Label" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Start" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 400.0
+offset_right = 960.0
+offset_bottom = 496.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "開始遊戲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Multiplayer" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 504.0
+offset_right = 960.0
+offset_bottom = 600.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "多人連線"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instruction" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 616.0
+offset_right = 960.0
+offset_bottom = 701.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "操作說明"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 720.0
+offset_right = 960.0
+offset_bottom = 805.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "退出遊戲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="."]
+offset_left = 1088.0
+offset_top = 928.0
+offset_right = 1472.0
+offset_bottom = 993.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_h7v7r")
+theme_override_font_sizes/font_size = 40
+text = "v0.0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instruction" type="RichTextLabel" parent="."]
+offset_left = 64.0
+offset_top = 1009.0
+offset_right = 1216.0
+offset_bottom = 1105.0
+theme_override_fonts/normal_font = ExtResource("2_h7v7r")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1][center]-- 操作說明 --[/center][/wave]"
+scroll_active = false
+
+[node name="Enter_Back" type="Label" parent="."]
+offset_left = 960.0
+offset_top = 1856.0
+offset_right = 1600.0
+offset_bottom = 1984.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_h7v7r")
+theme_override_font_sizes/font_size = 80
+text = "按下 X 鍵返回"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4v878")
+offset_right = 1280.0
+offset_bottom = 960.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="gui_input" from="Label/Start" to="." method="_on_start_gui_input"]
+[connection signal="mouse_entered" from="Label/Start" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Start" to="." method="_on_start_mouse_exited"]
+[connection signal="gui_input" from="Label/Multiplayer" to="." method="_on_multiplayer_gui_input"]
+[connection signal="mouse_entered" from="Label/Multiplayer" to="." method="_on_multiplayer_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Multiplayer" to="." method="_on_multiplayer_mouse_exited"]
+[connection signal="gui_input" from="Label/Instruction" to="." method="_on_instruction_gui_input"]
+[connection signal="mouse_entered" from="Label/Instruction" to="." method="_on_instruction_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Instruction" to="." method="_on_instruction_mouse_exited"]
+[connection signal="gui_input" from="Label/Exit" to="." method="_on_exit_gui_input"]
+[connection signal="mouse_entered" from="Label/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Exit" to="." method="_on_exit_mouse_exited"]

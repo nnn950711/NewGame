@@ -1,0 +1,39 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://b6jsaicvd1rvp"
+path="res://.godot/imported/BoutiqueBitmap9x9_1.9.ttf-9f6510014a0a2620c9fab59c7c62ee8f.fontdata"
+
+[deps]
+
+source_file="res://font/BoutiqueBitmap9x9_1.9/BoutiqueBitmap9x9_1.9.ttf"
+dest_files=["res://.godot/imported/BoutiqueBitmap9x9_1.9.ttf-9f6510014a0a2620c9fab59c7c62ee8f.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=65
+allow_system_fallback=true
+force_autohinter=true
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "新建配置",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={}

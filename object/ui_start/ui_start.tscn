@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://lk8wdonuxkmq"]
+
+[ext_resource type="Script" path="res://object/ui_start/ui_start.gd" id="1_oebbk"]
+[ext_resource type="FontFile" uid="uid://dfdnf14q617qg" path="res://font/BoutiqueBitmap9x9_1.9/BoutiqueBitmap9x9_3D.ttf" id="2_0q1lw"]
+
+[node name="Start UI" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_oebbk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 1152.0
+offset_bottom = 768.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.803922)
+
+[node name="Button" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SinglePlayer" type="Button" parent="Button"]
+offset_left = 128.0
+offset_top = 320.0
+offset_right = 512.0
+offset_bottom = 576.0
+focus_neighbor_right = NodePath("../TwoPlayer")
+theme_override_fonts/font = ExtResource("2_0q1lw")
+theme_override_font_sizes/font_size = 80
+text = "單人"
+
+[node name="TwoPlayer" type="Button" parent="Button"]
+offset_left = 768.0
+offset_top = 320.0
+offset_right = 1152.0
+offset_bottom = 576.0
+focus_neighbor_left = NodePath(".")
+theme_override_fonts/font = ExtResource("2_0q1lw")
+theme_override_font_sizes/font_size = 80
+text = "雙人"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ChangeScene" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="button_down" from="Button/SinglePlayer" to="." method="_on_single_player_button_down"]
+[connection signal="button_down" from="Button/TwoPlayer" to="." method="_on_two_player_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ChangeScene" to="." method="_on_change_scene_timeout"]

@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5hr87jp873nm"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_7bu6b"]
+[ext_resource type="PackedScene" uid="uid://b7l73jdyoyqy5" path="res://object/airplane/airplane.tscn" id="3_bt48m"]
+[ext_resource type="FontFile" uid="uid://b6jsaicvd1rvp" path="res://font/BoutiqueBitmap9x9_1.9/BoutiqueBitmap9x9_1.9.ttf" id="3_evyod"]
+[ext_resource type="Script" path="res://scenes/main/Enemy.gd" id="3_fiwwm"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qg82b"]
+a = Vector2(0, 960)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_557k7"]
+b = Vector2(832, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0sf6b"]
+a = Vector2(832, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_we8rl"]
+a = Vector2(832, 960)
+b = Vector2(832, 0)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_7bu6b")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 136.0
+offset_right = 1664.0
+offset_bottom = 224.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_evyod")
+theme_override_font_sizes/font_size = 80
+text = "分數：10000000"
+
+[node name="Lives" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 212.0
+offset_right = 1664.0
+offset_bottom = 308.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_evyod")
+theme_override_font_sizes/font_size = 80
+text = "殘機：3"
+
+[node name="Bomb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 288.0
+offset_right = 1664.0
+offset_bottom = 376.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_evyod")
+theme_override_font_sizes/font_size = 80
+text = "bomb：3"
+
+[node name="Title" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 408.0
+offset_right = 1088.0
+offset_bottom = 705.0
+scale = Vector2(1.75, 1.75)
+theme_override_fonts/font = ExtResource("3_evyod")
+theme_override_font_sizes/font_size = 80
+text = " 小
+  飛
+   機"
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 928.0
+offset_right = 240.0
+offset_bottom = 1056.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 80
+text = "時間："
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource("3_fiwwm")
+
+[node name="Airplane" parent="." instance=ExtResource("3_bt48m")]
+position = Vector2(408, 832)
+scale = Vector2(0.75, 0.75)
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_qg82b")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 960)
+shape = SubResource("SegmentShape2D_557k7")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_0sf6b")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_we8rl")
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

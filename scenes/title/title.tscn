@@ -1,0 +1,170 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb0iqbvgnpoqr"]
+
+[ext_resource type="Script" path="res://scenes/title/title.gd" id="1_vqla1"]
+[ext_resource type="FontFile" uid="uid://b6jsaicvd1rvp" path="res://font/BoutiqueBitmap9x9_1.9/BoutiqueBitmap9x9_1.9.ttf" id="2_h7v7r"]
+[ext_resource type="FontFile" uid="uid://bhso28fg75ws2" path="res://font/zpix/zpix.ttf" id="2_vvbqu"]
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_vqla1")
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_top = 128.0
+offset_right = 853.0
+offset_bottom = 213.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_h7v7r")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[center]小飛機[/center]"
+scroll_active = false
+
+[node name="Label" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Start" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 400.0
+offset_right = 960.0
+offset_bottom = 496.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "開始遊戲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Multiplayer" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 504.0
+offset_right = 960.0
+offset_bottom = 600.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "多人連線"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instruction" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 616.0
+offset_right = 960.0
+offset_bottom = 701.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "操作說明"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 720.0
+offset_right = 960.0
+offset_bottom = 805.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "退出遊戲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="."]
+offset_left = 1088.0
+offset_top = 928.0
+offset_right = 1472.0
+offset_bottom = 993.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_h7v7r")
+theme_override_font_sizes/font_size = 40
+text = "v0.0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instruction" type="RichTextLabel" parent="."]
+offset_left = 64.0
+offset_top = 1009.0
+offset_right = 1216.0
+offset_bottom = 1105.0
+theme_override_fonts/normal_font = ExtResource("2_h7v7r")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1][center]-- 操作說明 --[/center][/wave]"
+scroll_active = false
+
+[node name="Enter_Back" type="Label" parent="."]
+offset_left = 960.0
+offset_top = 1856.0
+offset_right = 1600.0
+offset_bottom = 1984.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_h7v7r")
+theme_override_font_sizes/font_size = 80
+text = "按下 X 鍵返回"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Instruction-Text" type="Label" parent="."]
+offset_left = 248.0
+offset_top = 1144.0
+offset_right = 1272.0
+offset_bottom = 1848.0
+scale = Vector2(0.75, 0.75)
+theme_override_fonts/font = ExtResource("2_vvbqu")
+theme_override_font_sizes/font_size = 80
+text = "--- (鍵盤) ---
+[Z] 確認、發射彈幕
+[X] 取消、慢速
+[ESC] 直接關閉遊戲
+[箭頭鍵] 移動自機
+
+--- (手把) ---
+[A] 確認、發射彈幕
+[B] 取消、慢速
+[左搖桿] 移動自機"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="What" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 600.0
+offset_right = 648.0
+offset_bottom = 1314.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_h7v7r")
+theme_override_font_sizes/font_size = 60
+text = "為什麼是概念版?
+
+之所以稱是概念版
+是因為目前遊戲的
+大部分功能尚未實
+現，所以就當作看
+看 UI 介面就好。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="Label/Start" to="." method="_on_start_gui_input"]
+[connection signal="mouse_entered" from="Label/Start" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Start" to="." method="_on_start_mouse_exited"]
+[connection signal="gui_input" from="Label/Multiplayer" to="." method="_on_multiplayer_gui_input"]
+[connection signal="mouse_entered" from="Label/Multiplayer" to="." method="_on_multiplayer_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Multiplayer" to="." method="_on_multiplayer_mouse_exited"]
+[connection signal="gui_input" from="Label/Instruction" to="." method="_on_instruction_gui_input"]
+[connection signal="mouse_entered" from="Label/Instruction" to="." method="_on_instruction_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Instruction" to="." method="_on_instruction_mouse_exited"]
+[connection signal="gui_input" from="Label/Exit" to="." method="_on_exit_gui_input"]
+[connection signal="mouse_entered" from="Label/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Label/Exit" to="." method="_on_exit_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
