@@ -2,6 +2,8 @@
 extends Node2D
 
 @onready var player = $CharacterBody2D
+@onready var timer = $Timer
+@onready var bullet = preload("res://object/bullet/bullet.tscn")
 
 
 # 準備
@@ -13,7 +15,8 @@ func _ready():
 func _process(delta):
 	# 發射彈幕
 	if (Input.is_action_pressed("ui_confirm")):
-		
+		if (timer.is_stopped() != false):
+			timer.start()
 		# 調試資訊
 		if (GlobalData.debug_mode == true):
 			print("發射彈幕！")
@@ -36,4 +39,11 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
+	queue_free()
 	print("NICE")
+
+
+func _on_timer_timeout():
+	var inst = bullet.instantiate()
+	inst.position = Vector2(player.position.x, player.position.y)
+	add_child(inst)

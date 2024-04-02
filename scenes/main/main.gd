@@ -36,32 +36,6 @@ func _process(delta):
 			enemy.make_popcorn(null, _x, -40, _x, randf_range(100, 300), 180, 0.5, 0.5, Color.RED)
 	else:
 		label_time.visible = false
-		
-	# 關卡 1
-	_time += 1
-	if(_time == 100):
-		var _x = 0
-		var _y = 0
-		for n in 6:
-			_x += 60
-			_y += 30
-			enemy.make_popcorn(null, _x, -40, _x, _y, 180, 0.5, 0.5, Color.RED, 1, Tween.TRANS_QUART)
-	if(_time == 300):
-		var _x = 820
-		var _y = 0
-		for n in 6:
-			_x -= 60
-			_y += 30
-			enemy.make_popcorn(null, _x, -40, _x, _y, 180, 0.5, 0.5, Color.RED, 1, Tween.TRANS_QUART)
-	if(_time == 600):
-		timer.start()
-		
-	if(_time == 5000):
-		timer.stop()
-	
-	if(_time == 6000):
-		enemy.free()
-
 
 # 計時器
 func _on_timer_timeout():

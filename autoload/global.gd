@@ -5,7 +5,7 @@ extends Node
 const version = "v0.0.1 概念版" # 版本
 
 # 變數
-var debug_mode = true # 調試模式
+var debug_mode = false # 調試模式
 
 
 # 準備
